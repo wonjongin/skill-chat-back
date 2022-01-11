@@ -41,6 +41,20 @@ export class UserController {
     return this.appService.getChatList(uid);
   }
 
+  @Post('addFriend/:uid1/:uid2')
+  @Header('Access-Control-Allow-Origin', '*')
+  @Header('Access-Control-Allow-Headers', '*')
+  addFriend(@Param('uid1') uid1: string, @Param('uid2') uid2: string) {
+    return this.appService.addFriend(uid1, uid2);
+  }
+
+  @Post('addChattingRoom/:uid/:roomId')
+  @Header('Access-Control-Allow-Origin', '*')
+  @Header('Access-Control-Allow-Headers', '*')
+  addChattingRoom(@Param('uid') uid: string, @Param('roomId') roomId: string) {
+    return this.appService.addChattingRoom(uid, roomId);
+  }
+
   @Post('createUser')
   @Header('Access-Control-Allow-Origin', '*')
   @Header('Access-Control-Allow-Headers', '*')

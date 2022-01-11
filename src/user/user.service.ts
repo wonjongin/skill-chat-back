@@ -65,6 +65,48 @@ export class UserService {
     }
   }
 
+  async addFriend(uid1: string, uid2: string) {
+    try {
+      const res = await queryToDB(
+        `SELECT friendlist FROM userdata WHERE uid='${uid1}'`,
+      );
+      const friendList: Array<string> = res.rows[0].friendlist;
+      friendList.push(uid2);
+      await queryToDB(
+        `UPDATE userdata SET friendlist='${JSON.stringify(
+          friendList,
+        )}' WHERE uid='${uid1}';`,
+      );
+      return 'SUCCESS';
+    } catch (err) {
+      throw new HttpException(
+        'Internal Server Error',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
+  }
+
+  async addChattingRoom(uid: string, roomId: string) {
+    try {
+      const res = await queryToDB(
+        `SELECT chatlist FROM userdata WHERE uid='${uid}'`,
+      );
+      const chatList: Array<string> = res.rows[0].chatlist;
+      chatList.push(roomId);
+      await queryToDB(
+        `UPDATE userdata SET chatlist='${JSON.stringify(
+          chatList,
+        )}' WHERE uid='${uid}';`,
+      );
+      return 'SUCCESS';
+    } catch (err) {
+      throw new HttpException(
+        'Internal Server Error',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
+  }
+
   async createUser(userData: CreateUserDto) {
     try {
       const uid: string = generateUid();

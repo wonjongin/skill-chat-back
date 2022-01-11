@@ -8,6 +8,9 @@ export class SpeakDto {
   readonly sender: string;
 
   @IsString()
+  readonly type: string;
+
+  @IsString()
   readonly content: string;
 
   @IsString()

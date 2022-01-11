@@ -16,14 +16,6 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false,
-    "paths": {
-      "@app/func": [
-        "libs/func/src"
-      ],
-      "@app/func/*": [
-        "libs/func/src/*"
-      ]
-    }
+    "noFallthroughCasesInSwitch": false
   }
 }

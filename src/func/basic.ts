@@ -40,5 +40,6 @@ export function replaceObjectToCamelCase(obj: Object): Object {
 export async function queryToDB(sql: string) {
   const db = await connection.connect();
   const res = await db.query(sql);
+  db.release();
   return res;
 }

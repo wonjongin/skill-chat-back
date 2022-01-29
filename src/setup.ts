@@ -16,7 +16,7 @@ async function setupDB(pool: Pool, sql: string) {
 }
 
 async function main() {
-  let answer = await inquirer.prompt([
+  const answer = await inquirer.prompt([
     {
       type: 'input',
       name: 'PGHOST',
@@ -132,7 +132,6 @@ SERVER_PORT=${answer.SERVER_PORT}`;
       spinnies.succeed('createUserDataTable', {
         text: 'Success to create table for user data',
       });
-
     })
     .catch((err) => {
       // console.log(err);
@@ -161,7 +160,7 @@ SERVER_PORT=${answer.SERVER_PORT}`;
         text: 'Fail to create table for chatting data',
       });
     });
-  process.exit(0)
+  process.exit(0);
 }
 
 main();

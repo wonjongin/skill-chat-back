@@ -37,6 +37,19 @@ export class UserService {
     }
   }
 
+  async getAllUserInfo(uid: string) {
+    try {
+      const res = await queryToDB(`SELECT * FROM userdata WHERE uid='${uid}'`);
+      const resw = replaceObjectToCamelCase(res.rows[0]);
+      return resw;
+    } catch (err) {
+      throw new HttpException(
+        'Internal Server Error',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
+  }
+
   async getChatList(uid: string) {
     try {
       const res = await queryToDB(

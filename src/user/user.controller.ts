@@ -27,6 +27,13 @@ export class UserController {
     return this.appService.getUserInfo(uid);
   }
 
+  @Get('getAllUserInfo/:uid')
+  @Header('Access-Control-Allow-Origin', '*')
+  @Header('Access-Control-Allow-Headers', '*')
+  getAllUserInfo(@Param('uid') uid: string) {
+    return this.appService.getAllUserInfo(uid);
+  }
+
   @Get('getFriendList/:uid')
   @Header('Access-Control-Allow-Origin', '*')
   @Header('Access-Control-Allow-Headers', '*')

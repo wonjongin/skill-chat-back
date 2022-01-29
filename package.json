@@ -30,6 +30,7 @@
     "async": "^3.2.3",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
+    "hangeul-id": "^0.1.0",
     "hashids": "^2.2.10",
     "inquirer": "^8.2.0",
     "pg": "^8.7.1",

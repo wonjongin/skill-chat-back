@@ -1,12 +1,14 @@
+import { integerToHangeulId } from 'hangeul-id';
 import { v4 as uuidv4 } from 'uuid';
 import { connection } from '../db';
 // import Hashids from 'hashids';
-const Hashids = require('hashids');
+// const Hashids = require('hashids');
 
 export function generateUid(): string {
-  const hashids = new Hashids('Skill Chat UUID');
+  // const hashids = new Hashids('Skill Chat UUID');
   const uuid = uuidv4().replace(/-/g, '');
-  const res = hashids.encodeHex(uuid);
+  const res = integerToHangeulId(parseInt(uuid, 16));
+  // const res = hashids.encodeHex(uuid);
   return res;
 }
 
@@ -14,7 +16,7 @@ export function replaceStrToCamelCase(str: string): string {
   const rules: Record<string, string> = {
     displayusername: 'displayUserName',
     chatlist: 'chatList',
-    friendlist: 'freindList',
+    friendlist: 'friendList',
     signdate: 'signDate',
     datetime: 'dateTime',
     roomid: 'roomId',

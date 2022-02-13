@@ -3,7 +3,7 @@ import {
   generateUid,
   queryToDB,
   replaceObjectToCamelCase,
-} from 'src/func/basic';
+} from '../func/basic';
 import { CreateChattingRoomDto } from './dto/create-chattingroom.dto';
 import { GoOutDto } from './dto/goOut.dto';
 import { SpeakDto } from './dto/speak.dto';

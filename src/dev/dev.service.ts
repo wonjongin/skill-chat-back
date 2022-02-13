@@ -1,5 +1,5 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { queryToDB, replaceObjectToCamelCase } from 'src/func/basic';
+import { queryToDB, replaceObjectToCamelCase } from '../func/basic';
 
 @Injectable()
 export class DevService {

@@ -48,6 +48,13 @@ export class UserController {
     return this.appService.getChatList(uid);
   }
 
+  @Get('getUserByEmail/:email')
+  @Header('Access-Control-Allow-Origin', '*')
+  @Header('Access-Control-Allow-Headers', '*')
+  getUserByEmail(@Param('email') email: string) {
+    return this.appService.getUserByEmail(email);
+  }
+
   @Post('addFriend/:uid1/:uid2')
   @Header('Access-Control-Allow-Origin', '*')
   @Header('Access-Control-Allow-Headers', '*')

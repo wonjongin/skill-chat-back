@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { ChattingModule } from './chatting/chatting.module';
 import { UserModule } from './user/user.module';
 import { DevModule } from './dev/dev.module';
+import { ChattingRoomModule } from './chatting-room/chatting-room.module';
 
 @Module({
   imports: [
@@ -12,8 +13,9 @@ import { DevModule } from './dev/dev.module';
     ChattingModule,
     UserModule,
     DevModule,
+    ChattingRoomModule,
   ],
   controllers: [AppController],
-  exports: [AppService],
+  providers: [AppService],
 })
 export class AppModule {}

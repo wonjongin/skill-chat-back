@@ -78,6 +78,23 @@ export class UserService {
     }
   }
 
+  async getUserByEmail(email: string) {
+    try {
+      const res = await queryToDB(
+        `SELECT uid FROM userdata WHERE email='${email}'`,
+      );
+      if (res.rowCount == 0) {
+        return null;
+      }
+      return replaceObjectToCamelCase(res.rows[0]);
+    } catch (err) {
+      throw new HttpException(
+        'Internal Server Error',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
+  }
+
   async addFriend(uid1: string, uid2: string) {
     try {
       const res = await queryToDB(

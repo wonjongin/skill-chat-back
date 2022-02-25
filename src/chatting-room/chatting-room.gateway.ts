@@ -9,9 +9,15 @@ import { SpeakDto } from '../chatting/dto/speak.dto';
 import { EnterDto } from './dto/enter.dto';
 
 @WebSocketGateway({
-  transports: ['websocket'],
+  transports: ['websocket', 'polling'],
   namespace: 'chattingRoom',
-  cors: { origin: '*' },
+  cors: {
+    origin: '*',
+    methods: ['GET', 'POST'],
+    transports: ['websocket', 'polling'],
+    credentials: false,
+  },
+  allowEIO3: true,
 })
 export class ChattingRoomGateway {
   constructor(private readonly appService: ChattingService) {}

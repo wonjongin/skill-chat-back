@@ -1,9 +1,17 @@
-# Skill Chat Backend server
+# Skill Chat Backend Server
 
 ## Pre-requirement
-- nodejs
-- postgresql
+- [nodejs](https://nodejs.org/) >= 10
+- [postgresql](https://www.postgresql.org)
 
 ## Setup
+```shell
+npm run setup
+```
 
 ## Run
+```shell
+npm run build
+
+node dist/main
+```

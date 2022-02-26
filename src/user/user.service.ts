@@ -109,7 +109,7 @@ export class UserService {
       );
       return {
         success: true,
-        message: "The user now has one more friend!"
+        message: 'The user now has one more friend!',
       };
     } catch (err) {
       throw new HttpException(
@@ -133,7 +133,7 @@ export class UserService {
       );
       return {
         success: true,
-        message: "The user now has one more chatting room!"
+        message: 'The user now has one more chatting room!',
       };
     } catch (err) {
       throw new HttpException(
@@ -167,7 +167,7 @@ export class UserService {
       console.log(res);
       return {
         success: true,
-        message: "The user is deleted!"
+        message: 'The user is deleted!',
       };
     } catch (err) {
       throw new HttpException(

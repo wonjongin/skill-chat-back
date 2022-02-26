@@ -31,7 +31,7 @@ export class ChattingService {
       );
       return {
         success: true,
-        message: "You spoke successfully!"
+        message: 'You spoke successfully!',
       };
     } catch (err) {
       console.log(err);
@@ -127,7 +127,7 @@ export class ChattingService {
       );
       return {
         success: true,
-        message: "You exited from the chatting room successfully!"
+        message: 'You exited from the chatting room successfully!',
       };
     } catch (err) {
       throw new HttpException(

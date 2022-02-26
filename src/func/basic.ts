@@ -12,7 +12,7 @@ export function generateUid(): string {
   return res;
 }
 
-export function serverNowDateTime():string {
+export function serverNowDateTime(): string {
   const now = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
   return now;
 }

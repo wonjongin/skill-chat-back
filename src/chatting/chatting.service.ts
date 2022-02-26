@@ -29,7 +29,10 @@ export class ChattingService {
           contents,
         )}' WHERE roomid='${speakData.roomId}';`,
       );
-      return 'SUCCESS';
+      return {
+        success: true,
+        message: "You spoke successfully!"
+      };
     } catch (err) {
       console.log(err);
       throw new HttpException(
@@ -122,7 +125,10 @@ export class ChattingService {
           afterUsers,
         )}' WHERE roomid='${goOutData.roomId}';`,
       );
-      return 'SUCCESS';
+      return {
+        success: true,
+        message: "You exited from the chatting room successfully!"
+      };
     } catch (err) {
       throw new HttpException(
         'Internal Server Error',

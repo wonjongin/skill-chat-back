@@ -36,9 +36,23 @@ export class ChattingRoomGateway {
   @SubscribeMessage('enter')
   async handleEnter(client: Socket, data: EnterDto) {
     client.leave(client.id);
+    const roomInfo: any = await this.appService.getChattingRoomData(
+      data.roomId,
+    );
+    if (!roomInfo.users.includes(data.uid)) {
+      return {
+        success: false,
+        errorName: 'NotMember',
+        message: 'You are not a member of the chatting room!',
+      };
+    }
     client.data.roomId = data.roomId;
     client.data.uid = data.uid;
     client.join(data.roomId);
+    return {
+      success: true,
+      message: 'Success entering',
+    };
   }
 
   @SubscribeMessage('speak')

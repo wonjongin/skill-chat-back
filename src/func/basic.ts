@@ -12,6 +12,11 @@ export function generateUid(): string {
   return res;
 }
 
+export function serverNowDateTime():string {
+  const now = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
+  return now;
+}
+
 export function replaceStrToCamelCase(str: string): string {
   const rules: Record<string, string> = {
     displayusername: 'displayUserName',

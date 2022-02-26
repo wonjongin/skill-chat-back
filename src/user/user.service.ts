@@ -107,7 +107,10 @@ export class UserService {
           friendList,
         )}' WHERE uid='${uid1}';`,
       );
-      return 'SUCCESS';
+      return {
+        success: true,
+        message: "The user now has one more friend!"
+      };
     } catch (err) {
       throw new HttpException(
         'Internal Server Error',
@@ -128,7 +131,10 @@ export class UserService {
           chatList,
         )}' WHERE uid='${uid}';`,
       );
-      return 'SUCCESS';
+      return {
+        success: true,
+        message: "The user now has one more chatting room!"
+      };
     } catch (err) {
       throw new HttpException(
         'Internal Server Error',
@@ -159,7 +165,10 @@ export class UserService {
     try {
       const res = await queryToDB(`DELETE FROM userdata where uid='${uid}'`);
       console.log(res);
-      return 'DELETE SUCCESS';
+      return {
+        success: true,
+        message: "The user is deleted!"
+      };
     } catch (err) {
       throw new HttpException(
         'Internal Server Error',

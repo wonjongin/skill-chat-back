@@ -11,7 +11,7 @@ export class UserService {
   async getName(uid: string) {
     try {
       const res = await queryToDB(
-        `select displayusername from userdata where uid='${uid}'`,
+        `SELECT displayusername FROM userdata WHERE uid='${uid}'`,
       );
       return replaceObjectToCamelCase(res.rows[0]);
     } catch (err) {
@@ -25,7 +25,7 @@ export class UserService {
   async getUserInfo(uid: string) {
     try {
       const res = await queryToDB(
-        `select email,signdate,chatlist,friendlist from userdata where uid='${uid}'`,
+        `SELECT email,signdate,chatlist,friendlist FROM userdata WHERE uid='${uid}'`,
       );
       const resw = replaceObjectToCamelCase(res.rows[0]);
       return resw;
@@ -53,7 +53,7 @@ export class UserService {
   async getChatList(uid: string) {
     try {
       const res = await queryToDB(
-        `select chatlist from userdata where uid='${uid}'`,
+        `SELECT chatlist FROM userdata WHERE uid='${uid}'`,
       );
       return replaceObjectToCamelCase(res.rows[0]);
     } catch (err) {
@@ -67,7 +67,7 @@ export class UserService {
   async getFriendList(uid: string) {
     try {
       const res = await queryToDB(
-        `select friendlist from userdata where uid='${uid}'`,
+        `SELECT friendlist FROM userdata WHERE uid='${uid}'`,
       );
       return replaceObjectToCamelCase(res.rows[0]);
     } catch (err) {

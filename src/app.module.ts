@@ -6,6 +6,7 @@ import { ChattingModule } from './chatting/chatting.module';
 import { UserModule } from './user/user.module';
 import { DevModule } from './dev/dev.module';
 import { ChattingRoomModule } from './chatting-room/chatting-room.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { ChattingRoomModule } from './chatting-room/chatting-room.module';
     UserModule,
     DevModule,
     ChattingRoomModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

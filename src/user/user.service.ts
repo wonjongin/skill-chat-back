@@ -176,4 +176,57 @@ export class UserService {
       );
     }
   }
+
+  async setRefreshToken(refreshToken: string, email: string) {
+    try {
+      const crypto = require('crypto');
+      const hashed = await crypto
+        .createHash('sha512')
+        .update(refreshToken + process.env.SALT)
+        .digest('base64');
+      await queryToDB(
+        `UPDATE userdata SET refresh_token='${hashed}' WHERE email='${email}';`,
+      );
+      return {
+        success: true,
+        message: 'Success to set refresh token',
+      };
+    } catch (err) {
+      throw new HttpException(
+        'Internal Server Error',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
+  }
+
+  async checkRefreshToken(refreshToken: string, uid: string) {
+    const user = await this.getAllUserInfo(uid);
+    const rt_answer = user['refresh_token'];
+    const crypto = require('crypto');
+    const rt_try = await crypto
+      .createHash('sha512')
+      .update(refreshToken + process.env.SALT)
+      .digest('base64');
+    const isMatch = rt_answer == rt_try;
+    if (isMatch) {
+      return user;
+    }
+  }
+
+  async logoutRefreshToken(uid: string) {
+    try {
+      await queryToDB(
+        `UPDATE userdata SET refresh_token=null WHERE uid='${uid}';`,
+      );
+      return {
+        success: true,
+        message: 'Success to logout',
+      };
+    } catch (err) {
+      throw new HttpException(
+        'Internal Server Error',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
+  }
 }

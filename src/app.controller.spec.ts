@@ -19,4 +19,12 @@ describe('AppController', () => {
       expect(appController.getHello()).toBe('Hello World!');
     });
   });
+
+  describe('serverDateTime', () => {
+    it('should return server date time', () => {
+      expect(appController.serverDateTime()).toMatch(
+        /^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/g,
+      );
+    });
+  });
 });
